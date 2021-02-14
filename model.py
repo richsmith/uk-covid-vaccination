@@ -123,6 +123,8 @@ def get_newly_passed_milestones(population, day, milestones):
             passed = milestone.check(population)
             if passed:
                 if milestone is milestones[-1]:
+                    # spesh case for the R<1 estimate: need 2+ weeks
+                    # to get immunity from 1st jab
                     day = day + timedelta(weeks=2)
                 newly_passed.append((day, milestone))
     return newly_passed
